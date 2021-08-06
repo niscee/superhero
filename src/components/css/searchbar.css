@@ -1,0 +1,14 @@
+.searchbar {
+  width: 60%;
+  margin: 50px auto;
+}
+
+.searchbar input {
+  display: "block";
+  width: 80%;
+  padding: 15px;
+}
+
+.form-inline{
+  display: flex;
+}
