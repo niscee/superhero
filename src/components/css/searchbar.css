@@ -9,6 +9,23 @@
   padding: 15px;
 }
 
-.form-inline{
+.form-inline {
   display: flex;
+}
+
+#form-btn {
+  width: 20%;
+  background-color: red;
+  padding: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .searchbar {
+    width: 95%;
+    margin: 50px auto;
+  }
+
+  #form-btn {
+    width: auto;
+  }
 }

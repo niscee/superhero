@@ -20,6 +20,13 @@ export default (state, action) => {
         loading: false,
       };
 
+    case "GET_SINGLE_USER":
+      return {
+        ...state,
+        product: action.payload,
+        loading: false,
+      };
+
     default:
       return state;
   }

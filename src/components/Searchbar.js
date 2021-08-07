@@ -5,6 +5,7 @@ import ProductContext from "../context/ProductContext";
 const Searchbar = () => {
   const [word, setWord] = useState("");
   const { searchHero } = useContext(ProductContext);
+  const [msg, setMsg] = useState(false);
 
   // get superhero name and returns to search function.
   const getName = (e) => {
@@ -15,7 +16,10 @@ const Searchbar = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (word === "") {
-      alert("Enter some data.");
+      setMsg(true);
+      setTimeout(() => {
+        setMsg(false);
+      }, 2000);
     } else {
       searchHero(word);
       setWord("");
@@ -23,24 +27,34 @@ const Searchbar = () => {
   };
 
   return (
-    <div className="searchbar">
-      <form onSubmit={onSubmit} className="form-inline">
-        <input
-          type="text"
-          placeholder="Search Your Favourite Superhero....."
-          name="superhero_name"
-          onChange={getName}
-          value={word}
-        ></input>
-        <button
-          type="submit"
-          className="btn btn-dark btn-block btn-sm"
-          style={{ width: "20%", backgroundColor: "red", color: "white" }}
-        >
-          SEARCH
-        </button>
-      </form>
-    </div>
+    <>
+      {msg && (
+        <div style={{width: "60%", backgroundColor: "red", margin: "auto"}}>
+          <p style={{ color: "white", textAlign: "center", fontWeight: "bold", padding: "15px" }}>
+            Please enter something.
+          </p>
+        </div>
+      )}
+      <div className="searchbar">
+        <form onSubmit={onSubmit} className="form-inline">
+          <input
+            type="text"
+            placeholder="Search Your Favourite Superhero....."
+            name="superhero_name"
+            onChange={getName}
+            value={word}
+          ></input>
+          <button
+            type="submit"
+            className="btn btn-dark btn-block btn-sm"
+            id="form-btn"
+            style={{ color: "white" }}
+          >
+            SEARCH
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

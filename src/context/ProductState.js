@@ -4,13 +4,16 @@ import ProductReducer from "./ProductReducer";
 
 // fetching all cocktails.
 const TOKEN = 4231845973529584;
-const LETTER = "d";
+const LETTER = "ba";
 const GET_ITEMS_URL = `https://www.superheroapi.com/api.php/${TOKEN}/search/`;
+const GET_SINGLE_ITEM_URL = `https://www.superheroapi.com/api.php/${TOKEN}/`;
+
 
 const ProductState = (props) => {
   const initalState = {
     products: [],
     loading: false,
+    product: []
   };
 
   // initializing reducer.
@@ -56,8 +59,29 @@ const ProductState = (props) => {
     }
   };
 
+
+  // get single superhero.
+  const getSingleHero = async (id) => {
+    try {
+      setLoading();
+      console.log(`${GET_SINGLE_ITEM_URL}${id}`)
+      const resp = await fetch(`${GET_SINGLE_ITEM_URL}${id}`);
+      const filterRes = await resp.json();
+     
+      dispatch({
+        type: "GET_SINGLE_USER",
+        payload: filterRes,
+      });
+      console.log(state.singleProduct);
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // useEffect hooks.
   useEffect(() => {
+    console.log("done.")
     getHeroes();
   }, []);
 
@@ -65,10 +89,12 @@ const ProductState = (props) => {
     <ProductContext.Provider
       value={{
         products: state.products,
+        product: state.product,
         loading: state.loading,
         getHeroes,
         setLoading,
         searchHero,
+        getSingleHero
       }}
     >
       {props.children}

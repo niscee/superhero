@@ -10,19 +10,22 @@
 
 .product-content {
   padding: 10px;
-  margin-top: 20px;
+  margin: 20px 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .product-content:hover {
-    transform: scaleY(1.1);
-    opacity: 0.5;
-  }
+  transform: scaleY(1.1);
+}
 
 .product-content img {
   width: 100%;
   height: 300px;
   object-fit: cover;
+}
+
+.product-content img:hover {
+  opacity: 0.5;
 }
 
 .details {
@@ -36,4 +39,8 @@
   width: 80%;
 }
 
-
+@media screen and (max-width: 600px) {
+  .products {
+    grid-template-columns: 100%;
+  }
+}
