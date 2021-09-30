@@ -29,7 +29,7 @@ const Searchbar = () => {
   return (
     <>
       {msg && (
-        <div style={{width: "60%", backgroundColor: "red", margin: "auto"}}>
+        <div style={{width: "60%", backgroundColor: "red", margin: "auto"}} id="msg">
           <p style={{ color: "white", textAlign: "center", fontWeight: "bold", padding: "15px" }}>
             Please enter something.
           </p>

@@ -1,13 +1,21 @@
 import React, { useEffect, useContext } from "react";
 import ProductContext from "../context/ProductContext";
 import "./css/individual.css";
-import {
-  useParams,
-  useRouteMatch
-}from "react-router-dom";
+import { useParams, useRouteMatch } from "react-router-dom";
 
 const Individual = () => {
   const { getSingleHero, product, products } = useContext(ProductContext);
+
+  let { targetId } = useParams();
+
+  useEffect(() => {
+    getSingleHero(targetId);
+  }, []);
+
+  if (!product) {
+    return <h2>No Data Found</h2>;
+  }
+
   const {
     id,
     name,
@@ -19,14 +27,6 @@ const Individual = () => {
     powerstats,
     work,
   } = product;
-  
-  let { targetId } = useParams();
-  
-  useEffect(() => {
-    getSingleHero(targetId);
-  }, []);
-
-  console.log(products);
 
   return (
     <div className="single-hero-container">

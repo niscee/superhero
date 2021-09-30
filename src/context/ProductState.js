@@ -72,7 +72,6 @@ const ProductState = (props) => {
         type: "GET_SINGLE_USER",
         payload: filterRes,
       });
-      console.log(state.singleProduct);
 
     } catch (err) {
       console.log(err);
